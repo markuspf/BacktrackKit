@@ -10,3 +10,4 @@ ReadPackage( "BacktrackKit", "gap/partitionstack.gi");
 ReadPackage( "BacktrackKit", "gap/BacktrackKit.gi");
 ReadPackage( "BacktrackKit", "gap/constraint.gi");
 ReadPackage( "BacktrackKit", "gap/constraints/simpleconstraints.g");
+ReadPackage( "BacktrackKit", "gap/constraints/semigrp_constraints.g");
