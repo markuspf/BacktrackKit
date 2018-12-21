@@ -30,7 +30,7 @@ BTKit_Con.TransCentralizer := function(n, fixedelt)
 
     r := rec( name := "TransCentralizer",
               check := {p} -> fixedelt ^ p = fixedelt,
-              refine := rec( initalise := function(ps)
+              refine := rec( initalise := function(ps, rbase)
                                local points;
                                points := fixByFixed(PS_FixedPoints(ps));
                                # Pass cyclepart just on the first call, for efficency
@@ -62,24 +62,24 @@ BTKit_Con.TransformationSemigroupNormalizer := function(n, semigrp)
     # element tests.
     gens := GeneratorsOfSemigroup(semigrp);
 
-    imgpart := ImageListOfTransformation(fixedelt);
-    kernelpart := FlatKernelOfTransformation(fixedelt, n);
+    # imgpart := ImageListOfTransformation(fixedelt);
+    # kernelpart := FlatKernelOfTransformation(fixedelt, n);
 
-    fixByFixed := function(pointlist)
-        local part, s, p;
-        part := [1..n] * 0;
-        s := 1;
-        for p in pointlist do
-            if part[p] = 0 then
-                repeat
-                    part[p] := s;
-                    p := p ^ fixedelt;
-                    s := s + 1;
-                until part[p] <> 0;
-            fi;
-        od;
-        return part;
-    end;
+#    fixByFixed := function(pointlist)
+#        local part, s, p;
+#        part := [1..n] * 0;
+#        s := 1;
+#        for p in pointlist do
+#            if part[p] = 0 then
+#                repeat
+#                    part[p] := s;
+#                    p := p ^ fixedelt;
+#                    s := s + 1;
+#                until part[p] <> 0;
+#            fi;
+#        od;
+#        return part;
+#    end;
 
     r := rec( name := "TransCentralizer",
               check := {p} -> ForAll(gens, g -> g^p in semigrp),
